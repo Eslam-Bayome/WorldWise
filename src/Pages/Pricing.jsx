@@ -1,8 +1,7 @@
-// Uses the same styles as Product
 import NavPag from "../components/NavPag";
 import styles from "./Product.module.css";
 
-export default function Product() {
+function Pricing() {
   return (
     <main className={styles.product}>
       <NavPag />
@@ -24,3 +23,5 @@ export default function Product() {
     </main>
   );
 }
+
+export default Pricing;

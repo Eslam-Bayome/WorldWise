@@ -5,7 +5,7 @@ import Pricing from "./Pages/Pricing";
 import Homepage from "./Pages/Homepage";
 import PageNotFound from "./Pages/PageNotFound";
 import AppLayout from "./Pages/AppLayout";
-import Product from "./Pages/Pricing";
+import Product from "./Pages/Product";
 import Login from "./Pages/Login";
 import CityList from "./components/CityList";
 import City from "./components/City";
