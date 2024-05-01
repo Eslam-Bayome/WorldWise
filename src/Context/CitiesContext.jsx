@@ -3,6 +3,7 @@ import {
   useCallback,
   useContext,
   useEffect,
+  useMemo,
   useReducer,
   useState,
 } from "react";
@@ -52,9 +53,7 @@ function CitiesProvider({ children }) {
     reducer,
     initialState
   );
-  // const [cities, setCities] = useState([]);
-  // const [isLoading, setIsLoading] = useState(false);
-  // const [currentCity, setCurrentCity] = useState({});
+
   useEffect(() => {
     async function fetchCities() {
       dispatch({ type: "startFetching" });
@@ -125,20 +124,19 @@ function CitiesProvider({ children }) {
     }
   }
 
+  const values = useMemo(() => {
+    return {
+      cities,
+      isLoading,
+      currentCity,
+      getCity,
+      createCity,
+      deleteCity,
+      error,
+    };
+  }, [cities, isLoading, currentCity, getCity, createCity, deleteCity, error]);
   return (
-    <CitiesContext.Provider
-      value={{
-        cities,
-        isLoading,
-        currentCity,
-        getCity,
-        createCity,
-        deleteCity,
-        error,
-      }}
-    >
-      {children}
-    </CitiesContext.Provider>
+    <CitiesContext.Provider value={values}>{children}</CitiesContext.Provider>
   );
 }
 function useCities() {
